@@ -14,9 +14,11 @@ defmodule PoeBuildCost.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PoeBuildCost.PubSub},
       # Start the Endpoint (http/https)
-      PoeBuildCostWeb.Endpoint
+      PoeBuildCostWeb.Endpoint,
       # Start a worker by calling: PoeBuildCost.Worker.start_link(arg)
       # {PoeBuildCost.Worker, arg}
+      {DynamicSupervisor, strategy: :one_for_one, name: PoeBuildCost.DynamicSupervisor},
+      {Registry, keys: :unique, name: Registry.PoeBuildCost}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
