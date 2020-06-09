@@ -1,0 +1,11 @@
+<div class="fixed pin z-50 overflow-auto bg-black flex">
+  <div class="relative p-8 bg-white w-full max-w-md m-auto flex-col flex" style="width: 300px; height: 400px">
+    <%= f = form_for :new_url, "#", [phx_submit: :save_url] %>
+      <%= label f, :url %>
+      <%= text_input f, :url %>
+      <div>
+        <%= submit "Set", phx_disable_with: "Setting..." %>
+      </div>
+    </form>
+  </div>
+</div>
