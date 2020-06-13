@@ -1,0 +1,25 @@
+<div id="item-<%= @id %>">
+  <div
+    phx-click="open_modal"
+    phx-target="<%= @myself %>"
+    class="absolute border"
+    style="width: 112px; height: 240px; top: 0px; left: 485px; background-image: url('<%=@icon %>')"
+  />
+
+  <%= if @show_modal do %>
+    <div class="phx-modal">
+      <div class="phx-modal-content" style="">
+        <%= f = form_for :new_url, "#", [phx_submit: :save_url, "phx-target": "#item-#{@id}"] %>
+        <%= label f, :url %>
+        <%= text_input f, :url %>
+        <div>
+          <%= submit "Set", phx_disable_with: "Setting..." %>
+        </div>
+        <button class="phx-modal-close" phx-click="open_modal" phx-target="<%= @myself %>">
+          Cancel
+        </button>
+        </form>
+      </div>
+    </div>
+  <%= end %>
+</div>
