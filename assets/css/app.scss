@@ -95,3 +95,30 @@
 .alert:empty {
   display: none;
 }
+
+.H1 {
+  height: 47.5px;
+}
+.W1 {
+  width: 47.5px;
+}
+.H2 {
+  height: 95px;
+}
+.W2 {
+  width: 95px;
+}
+.H3 {
+  height: 142.5px;
+}
+.H4 {
+  height: 190px;
+}
+
+.item-container {
+}
+
+.item-container:hover {
+  background-color: blue;
+  opacity: 0.2;
+}
