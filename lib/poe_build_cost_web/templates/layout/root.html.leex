@@ -9,14 +9,18 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body class="bg-black">
+  <body id="wrapper" class="bg-black">
     <header>
-      <section class="bg-black">
+      <section class="bg-black p-4">
         <a href="/">
-          <p class="m-8 text-2xl text-white">PoE build cost</p>
+          <p class="text-2xl text-white">PoE build cost</p>
         </a>
       </section>
     </header>
-    <%= @inner_content %>
+    <div class="flex justify-center items-center" style="height: 90%">
+      <%= @inner_content %>
+    </div>
   </body>
+  <footer>
+  </footer>
 </html>
