@@ -1,7 +1,11 @@
-<div class=flex-1" style="max-width: 780px;">
-  <div class="flex-2 relative bg-cover bg-no-repeat" style="background-image: url('<%= Routes.static_path(@socket, "/images/main_inventory.png") %>')" alt="Phoenix Framework Logo">
-    <img class="opacity-0" src="<%= Routes.static_path(@socket, "/images/main_inventory.png") %>" alt="Phoenix Framework Logo"/>
-  </div>
+<div class="m-4 mt-4 flex justify-center">
+<div class="relative bg-cover bg-no-repeat inline-block" style="background-image: url('<%= Routes.static_path(@socket, "/images/main_inventory.png") %>')">
+  <img class="opacity-0 relative block" src="<%= Routes.static_path(@socket, "/images/main_inventory.png") %>" />
+  <%= for slot <- @slots do %>
+    <%= live_render(@socket, PoeBuildCostWeb.ItemLive, id: "item-#{slot}", session: %{"slot" => slot, "build" => @build}) %>
+  <% end %>
 </div>
-
-<%= live_component(@socket, PoeBuildCost.LiveComponent.ItemComponent, id: :helmet) %>
+<div class="bg-cover bg-no-repeat inline-block" style="background-image: url('<%= Routes.static_path(@socket, "/images/summary.png") %>')">
+  <img class="opacity-0 relative block" src="<%= Routes.static_path(@socket, "/images/summary.png") %>" />
+</div>
+</div>
