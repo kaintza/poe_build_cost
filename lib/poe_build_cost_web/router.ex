@@ -17,7 +17,11 @@ defmodule PoeBuildCostWeb.Router do
   scope "/", PoeBuildCostWeb do
     pipe_through :browser
 
-    live "/", BuildCostLive, :index
+    #get("/", BuildController, :show)
+    live "/", BuildLive, :index
+    live "/:build_url", BuildLive, :show
+    live "/setup", BuildLive, :show
+    live "/setup/:id", BuildLive, :show
   end
 
   # Other scopes may use custom stacks.
