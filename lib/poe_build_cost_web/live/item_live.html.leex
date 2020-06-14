@@ -1,25 +1,27 @@
-<div id="item-<%= @id %>">
-  <div
-    phx-click="open_modal"
-    phx-target="<%= @myself %>"
-    class="absolute border"
-    style="width: 112px; height: 240px; top: 0px; left: 485px; background-image: url('<%=@icon %>')"
-  />
+<div>
+  <%= if @item do %>
+    <a class="" href="<%=@url %>" target="_blank">
+      <div class="item-container bg-cover bg-no-repeat absolute" id="<%=@slot%>" style="background-image: url('#{@icon}');" >
+      </div>
+    </a>
+    <% else %>
+    <div class="item-container absolute" id="<%=@slot%>" phx-click="open_modal"/>
+  <% end %>
+</div>
 
-  <%= if @show_modal do %>
-    <div class="phx-modal">
-      <div class="phx-modal-content" style="">
-        <%= f = form_for :new_url, "#", [phx_submit: :save_url, "phx-target": "#item-#{@id}"] %>
+<%= if @show_modal do %>
+  <div class="phx-modal">
+    <div class="phx-modal-content" style="">
+      <%= f = form_for :new_url, "#", class: "mb-0", phx_submit: :save_url %>
         <%= label f, :url %>
         <%= text_input f, :url %>
-        <div>
-          <%= submit "Set", phx_disable_with: "Setting..." %>
-        </div>
-        <button class="phx-modal-close" phx-click="open_modal" phx-target="<%= @myself %>">
-          Cancel
-        </button>
-        </form>
-      </div>
+        <div class="flex justify-center mt-4">
+        <%= submit "Set", class: "px-3" %>
+      <button type="button" class="ml-3 px-3 inline-block" phx-click="close_modal">
+        Cancel
+      </button>
     </div>
-  <%= end %>
-</div>
+      </form>
+    </div>
+  </div>
+<%= end %>
